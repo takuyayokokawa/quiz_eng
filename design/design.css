@@ -309,7 +309,7 @@ span.under{
     display: none;
 }
 
-#explanation1,#explanation2,#explanation3,#explanation4,#explanation5,#link_p{
+#explanation1,#explanation2,#explanation3,#explanation4,#explanation5,#explanation6,#explanation7,#info_event{
     width: 90%;
     margin: 0 auto;
     font-size: 16px;
@@ -423,12 +423,28 @@ span.under{
     margin: 2% 0;
 }
 
+#stream1, #stream2{
+    width: 60%;
+    margin: 2% auto;
+    padding: 2%;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    display: block;
+    background-color: #e9edbb;
+}
+
 #result_btn_box{
     width: 90%;
     margin: 3% auto;
+    text-align: center;
 }
 
-#result_btn_box > a{
+#retry{
     border-radius: 10px;
     padding: 2%;
     width: 91%;
@@ -567,7 +583,7 @@ span.under{
 
 
     #result{
-        width: 100%;
+        width: 90%;
         margin: 0 auto;
         font-size: 16px;
     }

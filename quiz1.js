@@ -7,61 +7,19 @@
     const question_text3 = document.getElementById("question_text3");
     const question_text4 = document.getElementById("question_text4");
     const choices = document.getElementById("choices");
-    const correct_comment = document.getElementById("correct_comment");
-    const wrong_comment = document.getElementById("wrong_comment");
     const explanation1 = document.getElementById("explanation1");
     const explanation2 = document.getElementById("explanation2");
     const explanation3 = document.getElementById("explanation3");
     const explanation4 = document.getElementById("explanation4");
     const explanation5 = document.getElementById("explanation5");
-    const link_p = document.getElementById("link_p");
-    const link_a = document.getElementById("link_a");
+    const explanation6 = document.getElementById("explanation6");
+    const explanation7 = document.getElementById("explanation7");
     const q_number = document.getElementById("q_number");
     const next_btn = document.getElementById("next_btn");
     const result = document.getElementById("result");
     const scoreLabel = document.querySelector("#score");
-    const rank = document.getElementById("rank");
     const saikun = document.getElementById("saikun");
     const commentary = document.getElementById("commentary");
-    const target = document.getElementById("link_a");
-
-    
-
-
-    // ▼①元のHTMLソースを保持しておく変数
-    var backupOriginal = "";
-    // ▼②文字列を検索してハイライト用要素を加える処理
-    function replacer( str, word , att  ) {
-      var SearchString = '(' + word + ')';
-      var RegularExp = new RegExp( SearchString, "g" );
-      var ReplaceString = '<span class="' + att + '">$1</span>';
-      var ResString = str.replace( RegularExp , ReplaceString );
-      return ResString;
-  }
-    // ▼③ハイライトを加える処理
-    function addhighlight() {
-      backupOriginal = document.getElementById("question_text").innerHTML;
-      var forShow = backupOriginal;
-      forShow = replacer( forShow, "(1)Spectacular", "under" );
-      document.getElementById("question_text").innerHTML = forShow;
-  }
-
-  // ▼④ハイライトを消す処理
-function clearhighlight() {
-    document.getElementById("question_text").innerHTML = backupOriginal;  // バックアップから書き戻す
-    backupOriginal = "";    // バックアップを消す
-}
-// ▼⑤ハイライトを加えるか消すかを判断
-function highlightcheck() {
-    if( backupOriginal.length == 0 ) {
-        // 何もバックアップされていなければ（未ハイライトなので）ハイライトを加える
-        addhighlight();
-    }
-    else {
-        // 何かバックアップされていれば（ハイライト済みなので）ハイライトを消す
-        clearhighlight();
-    }
-}
 
 
     
@@ -71,16 +29,16 @@ function highlightcheck() {
         
         {q: "(1) 傍線部の語句の意味として適切なものを選択してください。", c: ["華やかな", "疑わしい", "まぶしい"], e1: "正解……「華やかな」", e2:"「まぶしい」の意味の単語はblinding、dazzlingなど", e3:"「疑わしい」の意味の単語はsuspiciousなど",},
         {q: "(2) 空欄に当てはまる語を選択してください。", c: ["by", "at", "in"], e1: "正解……「by」", e2:"前置詞はイメージを捉えることがおすすめ！", e3:"inは中に入っているイメージ", e4:"atは点をコアに、派生して場所やある地点への移動", e5:"byは近接しているイメージ",},
-        {q: "(3) 傍線部と同じ意味のものを選択してください。", c: ["must become", "are able to", "are about to"], e1: "正解……「must become」", e2: "be sure toは「〜に違いない」の意味。", e3:"よって、mustで言い換えられる。", e4:"②be able toは「〜できる」、③be about toは「〜しようとしている」", e5:"日本語訳）Opening FestivalとEnding Festivalには、「圧倒的な規模」「華やかな演出」「長い歴史」の主に3つの魅力があります。開幕、閉幕を飾る両企画は、例年数多くの方が観覧します。個性的で迫力があり、今年度も祭最大の盛り上がりを見せるに違いないパフォーマンスは必見です！",},
+        {q: "(3) 傍線部と同じ意味のものを選択してください。", c: ["must become", "are able to", "are about to"], e1: "正解……「must become」", e2: "be sure toは「〜に違いない」の意味。よって、mustで言い換えられる。", e3:"②be able toは「〜できる」、③be about toは「〜しようとしている」", e4:"日本語訳）Opening FestivalとEnding Festivalには、「圧倒的な規模」「華やかな演出」「長い歴史」の主に3つの魅力があります。開幕、閉幕を飾る両企画は、例年数多くの方が観覧します。個性的で迫力があり、今年度も祭最大の盛り上がりを見せるに違いないパフォーマンスは必見です！", e5:"1⃣では、Opening Festival & Ending Festivalについての英文から問題を出題しました。",},
         {q: "(4) 空欄に当てはまる語を選択してください。", c: ["collaborative", "terrestrial", "borderless"], e1:"正解……「collaborative」", e2:"terrastrial =「地球の」", e3:"collaborative =「共同的な」", e4:"borderless =「無境界の」", e5:"「different groups」や「planned by～」といった文脈から判断し「collaborative」を選ぶ。",},
         {q: "(5) 空欄に当てはまる語を選択してください。", c: ["which", "that", "who"], e1: "正解……「which」", e2:"今回の先行詞（関係代名詞により修飾される名詞）は「the blue rose」、また用法は非制限用法。", e3:"whoは先行詞が人の場合に用いる。", e4:"②thatは非制限用法（コンマがある関係代名詞）の場合は使えない。", },
-        {q: "(6) 空欄に当てはまる語を選択してください。", c: ["to", "up", "for"], e1: "正解……「to」", e2:"bring+目的語+for+名詞 「目的語（人）に名詞（もの）を持ってくる」", e3:"bring+目的語+to+名詞 「目的語（人･もの）を名詞（場所）につれてくる」", e4:"bring up 「～を育てる」、「～をしつける」", e5:"前置詞の後に続く名詞が「ParadiSe」（楽園）＝場所なので「to」を選ぶ",},
+        {q: "(6) 空欄に当てはまる語を選択してください。", c: ["to", "up", "for"], e1: "正解……「to」", e2:"bring+目的語+for+名詞 「目的語（人）に名詞（もの）を持ってくる」", e3:"bring+目的語+to+名詞 「目的語（人･もの）を名詞（場所）につれてくる」", e4:"bring up 「～を育てる」、「～をしつける」", e5:"前置詞の後に続く名詞が「ParadiSe」（楽園）＝場所なので「to」を選ぶ", e6:"日本語訳） WASEDA NiGht ParadiSeは1日目の閉幕を飾る企画で、2つのステージで開催されます。運営スタッフ企画ならではの異なる団体によるコラボステージもあります。「願いを叶える」という花言葉を持つ青い薔薇を象徴に、光と音で観客・視聴者を「ParadiSe」へお連れします！", e7:"2️⃣では、''WASEDA NiGht ParadiSe''に関する英文から問題を出題しました。",},
         {q: "(7) 空欄に当てはまる語を選択してください。", c: ["with", "for", "against"], e1: "正解……「with」", e2:"「〜との繋がり」という意味のtie（※通常tiesで用いる）は前置詞にwithを使う。",},
         {q: "(8) 空欄に当てはまる語を選択してください。", c: ["would", "will", "is"], e1: "正解……「would」", e2:"仮定法過去（現在の事実と異なる仮定）の主節は助動詞の過去形を用いる。",},
-        {q: "(9) 空欄に当てはまる語を選択してください。", c: ["gratitude", "kindness", "wonderfull"], e1: "正解……「gratitude」", e2:"with a sense of gratitudeで「感謝の気持ちを胸に」の意",e3:"日本語訳）早稲田大学のコンセプトと同様に、早稲田祭2021も様々な地域社会との強いつながりを保っています。地域の方のご理解やご協力なしには決して祭は成り立ちません。早稲田祭2021の運営スタッフは地域の方への感謝の気持ちを胸に抱きながら日々活動しています。"},
+        {q: "(9) 空欄に当てはまる語を選択してください。", c: ["gratitude", "kindness", "wonderfull"], e1: "正解……「gratitude」", e2:"with a sense of gratitudeで「感謝の気持ちを胸に」の意",e3:"日本語訳）早稲田大学のコンセプトと同様に、早稲田祭2021も様々な地域社会との強いつながりを保っています。地域の方のご理解やご協力なしには決して祭は成り立ちません。早稲田祭2021の運営スタッフは地域の方への感謝の気持ちを胸に抱きながら日々活動しています。", e4:"3️⃣では、早稲田祭2021と地域との繋がりに関する英文から問題を出題しました。",},
         {q: "(10) 空欄に当てはまる語を選択してください。", c: ["between", "among", "from"], e1: "正解……「between」", e2:"対象が明確に区別されているものの時は3つ以上でもbetweenを用いる場合がある。",},
         {q: "(11) 空欄に当てはまる語を選択してください。", c: ["equipment", "material", "useful"],　e1:"正解……「equipment」", e2: "facilities（設備）の言い換えになっているequipment（設備）を選ぶ",},
-        {q: "(12) 空欄に当てはまる語を選択してください。", c: ["make", "give", "change"], e1:"正解……「make」", e2: "make O Cで「OをCにする」というmakeの用法。", e3:"日本語訳）小野記念講堂ステージ、10号館109教室ステージ、戸山カフェテリアステージを比較してみましょう。3つのステージの違いは、広さと収容人数と設備です。ステージが一番広いのは小野記念講堂ステージ、収容人数が最も多いのは10号館109教室ステージ、そして設備が最も充実しているのは戸山カフェテリアステージです。ステージごとに異なった良さがあり、どこも演者を輝かせることが出来ます。",},
+        {q: "(12) 空欄に当てはまる語を選択してください。", c: ["make", "give", "change"], e1:"正解……「make」", e2: "make O Cで「OをCにする」というmakeの用法。", e3:"日本語訳）小野記念講堂ステージ、10号館109教室ステージ、戸山カフェテリアステージを比較してみましょう。3つのステージの違いは、広さと収容人数と設備です。ステージが一番広いのは小野記念講堂ステージ、収容人数が最も多いのは10号館109教室ステージ、そして設備が最も充実しているのは戸山カフェテリアステージです。ステージごとに異なった良さがあり、どこも演者を輝かせることが出来ます。", e4:"4️⃣では、キャンパス内ステージ企画に関連した英文から問題を出題しました。",},
     ]
     let currentNum = 0;
     let isAnswered;
@@ -115,8 +73,8 @@ function highlightcheck() {
         explanation3.classList.remove("none");
         explanation4.classList.remove("none");
         explanation5.classList.remove("none");
-        link_p.classList.remove("none");
-        link_a.classList.remove("none");
+        explanation6.classList.remove("none");
+        explanation7.classList.remove("none");
         next_btn.classList.remove("disabled");
 
     }
@@ -136,11 +94,12 @@ function highlightcheck() {
 
         explanation5.textContent = quizSet[currentNum].e5;
 
-        link_p.textContent = quizSet[currentNum].lp;
+        explanation6.textContent = quizSet[currentNum].e6;
 
-        link_a.textContent = quizSet[currentNum].la;
+        explanation7.textContent = quizSet[currentNum].e7;
 
-        target.href = quizSet[currentNum].la;
+
+
 
 
 
@@ -188,6 +147,8 @@ function highlightcheck() {
 
     }
 
+    
+
 
     }
 
@@ -226,15 +187,17 @@ function highlightcheck() {
         }
         explanation5.classList.add("none")
 
-        if (link_p.classList.contains("none")){
+        if (explanation6.classList.contains("none")){
             return;
         }
-        link_p.classList.add("none")
+        explanation6.classList.add("none")
 
-        if (link_a.classList.contains("none")){
+        if (explanation7.classList.contains("none")){
             return;
         }
-        link_a.classList.add("none")
+        explanation7.classList.add("none")
+
+        
 
         
 
@@ -243,6 +206,7 @@ function highlightcheck() {
         if (currentNum === quizSet.length - 1) {
             scoreLabel.textContent = `${score}`;
             result.classList.remove("hidden");
+
             if( score > 11){
                 saikun.src = "design/image/saikun_rank1.png"
                 commentary.textContent = "すごい！ばっちりツノ！"
@@ -264,5 +228,9 @@ function highlightcheck() {
             currentNum++;
             setQuiz();
         }
+
     })
+
+    
+    
 }
